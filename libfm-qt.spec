@@ -57,7 +57,7 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 # We need fix this upstream
 find %{buildroot} -size 0 -delete
 
-%files -f %{name}.lang
+%files
 %doc AUTHORS
 %{_libdir}/libfm-qt.so.3*
 
