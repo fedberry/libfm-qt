@@ -1,6 +1,6 @@
 Name: libfm-qt
 Version: 0.11.2
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: Companion library for PCManFM
 License: GPLv2+
 URL: http://lxqt.org
@@ -69,6 +69,9 @@ find %{buildroot} -size 0 -delete
 %{_datadir}/cmake/fm-qt/*
 
 %changelog
+* Thu Jan 19 2017 Christian Dersch <lupinix@mailbox.org> - 0.11.2-3
+- rebuilt
+
 * Wed Jan 18 2017 Christian Dersch <lupinix@mailbox.org> - 0.11.2-2
 - moved translations to lxqt-l10n
 
