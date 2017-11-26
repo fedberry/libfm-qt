@@ -1,6 +1,6 @@
 Name: libfm-qt
 Version: 0.11.2
-Release: 7%{?dist}
+Release: 8%{?dist}
 Summary: Companion library for PCManFM
 License: GPLv2+
 URL: http://lxqt.org
@@ -71,6 +71,9 @@ find %{buildroot} -size 0 -delete
 %{_datadir}/cmake/fm-qt/*
 
 %changelog
+* Sun Nov 26 2017 Rex Dieter <rdieter@fedoraproject.org> - 0.11.2-8
+- rebuild (qt5)
+
 * Wed Oct 11 2017 Rex Dieter <rdieter@fedoraproject.org> - 0.11.2-7
 - BR: qt5-qtbase-private-devel
 
