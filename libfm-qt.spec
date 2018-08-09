@@ -1,6 +1,6 @@
 Name: libfm-qt
-Version: 0.13.0
-Release: 2%{?dist}
+Version: 0.13.1
+Release: 1%{?dist}
 Summary: Companion library for PCManFM
 License: GPLv2+
 URL: http://lxqt.org
@@ -77,6 +77,9 @@ find %{buildroot} -size 0 -delete
 %{_datadir}/mime/packages/libfm-qt-mimetypes.xml
 
 %changelog
+* Thu Aug 09 2018 Zamir SUN <zsun@fedoraproject.org> - 0.13.1-1
+- Update to 0.13.1
+
 * Fri Aug 03 2018 Zamir SUN <zsun@fedoraproject.org> - 0.13.0-2
 - Add menu-cache-devel as Require, otherwise cmake report 'Imported target "fm-qt" includes non-existent path'
 
