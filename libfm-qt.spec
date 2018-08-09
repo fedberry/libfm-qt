@@ -1,10 +1,11 @@
 Name: libfm-qt
-Version: 0.11.2
-Release: 14%{?dist}
+Version: 0.13.0
+Release: 2%{?dist}
 Summary: Companion library for PCManFM
 License: GPLv2+
 URL: http://lxqt.org
-Source0: http://downloads.lxqt.org/libfm-qt/%{version}/%{name}-%{version}.tar.xz
+Source0: https://github.com/lxqt/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+
 BuildRequires: pkgconfig(Qt5Help)
 BuildRequires: pkgconfig(Qt5X11Extras)
 BuildRequires: qt5-qtbase-private-devel
@@ -15,9 +16,11 @@ BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(gio-2.0)
 BuildRequires: pkgconfig(gio-unix-2.0)
 BuildRequires: pkgconfig(libfm)
-BuildRequires: pkgconfig(lxqt) >= 0.11.0
+BuildRequires: pkgconfig(lxqt) >= 0.13.0
 BuildRequires: kf5-kwindowsystem-devel
 BuildRequires: pkgconfig(libmenu-cache) >= 0.3.0
+BuildRequires: libexif-devel
+Requires: menu-cache-devel
 Obsoletes: libfm-qt5 <  0.11.0
 Obsoletes: libfm-qt4 <= 0.9.0
 Obsoletes: libfm-qt-common <= 0.9.0
@@ -61,7 +64,7 @@ find %{buildroot} -size 0 -delete
 
 %files
 %doc AUTHORS
-%{_libdir}/libfm-qt.so.3*
+%{_libdir}/libfm-qt.so.5*
 
 %files devel
 %{_libdir}/libfm-qt.so
@@ -69,8 +72,17 @@ find %{buildroot} -size 0 -delete
 %{_includedir}/libfm-qt/
 %dir %{_datadir}/cmake/fm-qt
 %{_datadir}/cmake/fm-qt/*
+%{_datadir}/libfm-qt/archivers.list
+%{_datadir}/libfm-qt/terminals.list
+%{_datadir}/mime/packages/libfm-qt-mimetypes.xml
 
 %changelog
+* Fri Aug 03 2018 Zamir SUN <zsun@fedoraproject.org> - 0.13.0-2
+- Add menu-cache-devel as Require, otherwise cmake report 'Imported target "fm-qt" includes non-existent path'
+
+* Fri Aug 03 2018 Zamir SUN <zsun@fedoraproject.org> - 0.13.0-1
+- Update to version 0.13.0
+
 * Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.11.2-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
