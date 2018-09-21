@@ -1,6 +1,6 @@
 Name: libfm-qt
 Version: 0.13.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Companion library for PCManFM
 License: GPLv2+
 URL: http://lxqt.org
@@ -77,6 +77,9 @@ find %{buildroot} -size 0 -delete
 %{_datadir}/mime/packages/libfm-qt-mimetypes.xml
 
 %changelog
+* Fri Sep 21 2018 Jan Grulich <jgrulich@redhat.com> - 0.13.1-2
+- rebuild (qt5)
+
 * Thu Aug 09 2018 Zamir SUN <zsun@fedoraproject.org> - 0.13.1-1
 - Update to 0.13.1
 
