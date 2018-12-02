@@ -1,10 +1,13 @@
 Name: libfm-qt
 Version: 0.13.1
-Release: 2%{?dist}
+Release: 4%{?dist}
 Summary: Companion library for PCManFM
 License: GPLv2+
 URL: http://lxqt.org
 Source0: https://github.com/lxqt/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0: libfm-qt-0.13.1-check-if-app-exists-before-opening.patch
+Patch1: libfm-qt-0.13.1-fix-smb-error.patch
+Patch2: libfm-qt-0.13.1-correctly-handle-mountable-types.patch
 
 BuildRequires: pkgconfig(Qt5Help)
 BuildRequires: pkgconfig(Qt5X11Extras)
@@ -26,9 +29,11 @@ Obsoletes: libfm-qt4 <= 0.9.0
 Obsoletes: libfm-qt-common <= 0.9.0
 Provides: libfm-qt5 = %{version}
 
+
 %description
 Libfm-Qt is a companion library providing components to build
 desktop file managers.
+
 
 %package devel
 Summary: Development files for libfm-qt
@@ -38,15 +43,15 @@ Obsoletes: libfm-qt5-devel < 0.11.0
 Obsoletes: libfm-qt4-devel <= 0.9.0
 Provides: libfm-qt5-devel = %{version}
 
+
 %description devel
 libfm-qt-devel package contains libraries and header files for
 developing applications that use libfm-qt.
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
 
 %prep
-%setup -q
+%autosetup -p1
+
 
 %build
 mkdir -p %{_target_platform}
@@ -56,15 +61,18 @@ popd
 
 make %{?_smp_mflags} -C %{_target_platform}
 
+
 %install
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 # We need fix this upstream
 find %{buildroot} -size 0 -delete
 
+
 %files
 %doc AUTHORS
 %{_libdir}/libfm-qt.so.5*
+
 
 %files devel
 %{_libdir}/libfm-qt.so
@@ -76,7 +84,12 @@ find %{buildroot} -size 0 -delete
 %{_datadir}/libfm-qt/terminals.list
 %{_datadir}/mime/packages/libfm-qt-mimetypes.xml
 
+
 %changelog
+* Fri Nov 30 2018 Vaughan Agrez <devel at agrez dot net> - 0.13.1-4
+- Fix segfault when browsing a network share (Patches 0-3). Refer:
+  https://github.com/lxqt/pcmanfm-qt/issues/693om/lxqt/libfm-qt/pull/210
+
 * Fri Sep 21 2018 Jan Grulich <jgrulich@redhat.com> - 0.13.1-2
 - rebuild (qt5)
 
