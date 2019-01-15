@@ -1,6 +1,6 @@
 Name: libfm-qt
 Version: 0.13.1
-Release: 4%{?dist}
+Release: 5%{?dist}
 Summary: Companion library for PCManFM
 License: GPLv2+
 URL: http://lxqt.org
@@ -86,6 +86,9 @@ find %{buildroot} -size 0 -delete
 
 
 %changelog
+* Mon Jan 14 2019 Vaughan Agrez <devel at agrez dot net> - 0.13.1-5
+- Rebuild against updated qt5 libs
+
 * Fri Nov 30 2018 Vaughan Agrez <devel at agrez dot net> - 0.13.1-4
 - Fix segfault when browsing a network share (Patches 0-3). Refer:
   https://github.com/lxqt/pcmanfm-qt/issues/693om/lxqt/libfm-qt/pull/210
